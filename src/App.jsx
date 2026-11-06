@@ -1,14 +1,16 @@
 import './App.css'
 import Navbar from './components/Layout/Header'
+import Summary from './components/Layout/Summary'
 
 function App() {
 
   return (
     <>
     <Navbar />
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <section className='main-section'>
+      <h1 className='just'></h1>
+      <Summary />
+    </section>
     </>
   )
 }
