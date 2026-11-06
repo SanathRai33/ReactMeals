@@ -2,7 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import "./Cart.css";
 
-function Cart() {
+function Cart({ isOpen, setIsOpen}) {
     const cartItems = [
         {
             id: 1,
@@ -24,10 +24,20 @@ function Cart() {
         },
     ];
 
+    const cartCloseHandler = () =>{
+        setIsOpen(false)
+    }
+
     const totalAmount = cartItems.reduce(
         (total, item) => total + item.price * item.quantity,
         0
     );
+
+    if(!isOpen){
+        return (
+            <></>
+        )
+    }
 
     return createPortal(
         <div className="cart-backdrop">
@@ -49,7 +59,7 @@ function Cart() {
                 </div>
 
                 <div className="cart-actions">
-                    <button className="close-btn">Close</button>
+                    <button className="close-btn" onClick={cartCloseHandler}>Close</button>
                     <button className="order-btn">Order</button>
                 </div>
             </div>

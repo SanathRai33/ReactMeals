@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import Cart from './components/Cart/Cart'
 import Header from './components/Layout/Header'
@@ -6,16 +7,18 @@ import MealsList from './components/Meals/MealsList'
 
 function App() {
 
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div className='App'>
-      <Header />
+      <Header setIsOpen={setIsOpen} />
       <section className='main-section'>
         <h1 className='just'></h1>
         <Summary />
         <MealsList />
       </section>
 
-      <Cart />
+      <Cart isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   )
 }

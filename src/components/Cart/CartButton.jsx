@@ -1,9 +1,14 @@
 import React from 'react'
 import { IoCartSharp } from "react-icons/io5";
 
-const Cart = ({ cartCount }) => {
+const Cart = ({ cartCount, setIsOpen }) => {
+
+    const cartOpenHandler = () =>{
+        setIsOpen(true)
+    }
+    
     return (
-        <div className='cart'>
+        <div className='cart' onClick={cartOpenHandler}>
             <div className='icon'>
                 <IoCartSharp className='cart-icon' />
             </div>
