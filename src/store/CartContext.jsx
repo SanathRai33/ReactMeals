@@ -32,9 +32,30 @@ export function CartProvider({ children }) {
         });
     };
 
+
+    const removeItem = (item) => {
+        setCartItems((prevCart) => {
+
+            if (item.quantity === 1) {
+                return prevCart.filter((cartItem) => cartItem.mealsId !== item.mealsId);
+            }
+
+            return prevCart.map((cartItem) =>
+                cartItem.mealsId === item.mealsId ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem);
+
+        });
+    };
+
+
+    const clearCart = () => {
+        setCartItems([])
+    }
+
     const cartContextValue = {
         items: cartItems,
         addItem: addItem,
+        clearCart: clearCart,
+        removeItem: removeItem
     };
 
     return (

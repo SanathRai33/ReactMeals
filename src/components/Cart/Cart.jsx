@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { createPortal } from "react-dom";
-
 import { CartContext } from "../../store/CartContext";
-
 import "./Cart.css";
+import { BiMinus, BiPlus } from "react-icons/bi";
 
 const Cart = ({ isOpen, setIsOpen }) => {
 
@@ -19,6 +18,19 @@ const Cart = ({ isOpen, setIsOpen }) => {
     const cartCloseHandler = () => {
         setIsOpen(false)
     }
+
+    const orderHandler = () => {
+        console.log('Ordering the food', cartCtx.items);
+        cartCtx.clearCart()
+    }
+
+    const cartMinusHandler = (item) => {
+        cartCtx.removeItem(item);
+    };
+
+    const cartPlusHandler = (item) => {
+        cartCtx.addItem(item);
+    };
 
     return createPortal(
         <div className="cart-backdrop">
@@ -36,7 +48,13 @@ const Cart = ({ isOpen, setIsOpen }) => {
                                 </p>
                             </div>
                             <div>
-                                <p> $ {item.price.toFixed(2) * item.quantity}</p>
+                                <div className="action-btns">
+                                    <button onClick={() => cartMinusHandler(item)} ><BiMinus /></button>
+                                    <button onClick={() => cartPlusHandler(item)} ><BiPlus /></button>
+                                </div>
+                                <div className="total">
+                                    <p> $ {item.price.toFixed(2) * item.quantity}</p>
+                                </div>
                             </div>
                         </li>
                     ))}
@@ -50,7 +68,7 @@ const Cart = ({ isOpen, setIsOpen }) => {
 
                 <div className="cart-actions">
                     <button className="close-btn" onClick={cartCloseHandler}>Close</button>
-                    <button className="order-btn">Order</button>
+                    <button className="order-btn" onClick={orderHandler}>Order</button>
                 </div>
 
             </div>
