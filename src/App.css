@@ -1,3 +1,8 @@
+.App {
+  padding: 40px 0;
+  background-color: #373737;
+}
+
 .header {
   width: 100%;
   height: 60px;
@@ -51,11 +56,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 40px;
 }
 
 .summary {
   width: 700px;
   /* height: 160px; */
+  max-width: 92%;
   padding: 20px 40px;
   display: flex;
   align-items: center;
@@ -67,12 +74,41 @@
   color: white;
   text-align: center;
   font-family: 'Quicksand', sans-serif;
-  box-shadow: 1px 1px 10px gray;
+  box-shadow: 1px 1px 16px black;
 }
 
 .summary h2{
   margin-bottom: 10px;
   font-weight: 700;
+}
+
+.meals-list {
+  width: 900px;
+  max-width: 90%;
+  padding: 24px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.meals-item {
+  padding: 10px;
+  border-bottom: 1px solid gray;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.meals-item h5{
+  font-size: 16px;
+}
+
+.main-section p {
+  font-size: 14px;
+  font-style: italic;
+  padding: 4px 0;
+}
+
+.meals-list .price {
+  color: #83512e;
+  font-weight: 800;
 }
 
 
@@ -88,16 +124,16 @@
 /* Mobile Views */
 @media (max-width: 480px) {
   .header {
-    padding: 0 20px;
+    padding: 0 10px;
   }
 
   .summary {
-    width: 420px;
+    padding: 20px;
   }
 
   .summary h2{
     font-weight: 500;
-    font-size: 23px;
+    font-size: 21px;
   }
 
   .summary p{
