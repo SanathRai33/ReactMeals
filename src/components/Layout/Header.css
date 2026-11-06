@@ -24,6 +24,7 @@
   justify-content: space-evenly;
   border-radius: 24px;
   background-color: #441600;
+  cursor: pointer;
 }
 
 .cart-icon {

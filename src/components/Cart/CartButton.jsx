@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { CartContext } from "../../store/CartContext";
 import { IoCartSharp } from "react-icons/io5";
 
-const Cart = ({ cartCount, setIsOpen }) => {
+const Cart = ({ setIsOpen }) => {
 
-    const cartOpenHandler = () =>{
+    const cartCtx = useContext(CartContext);
+
+    const totalItems = cartCtx.items.reduce(
+        (total, item) => total + item.quantity,
+        0
+    );
+
+    const cartOpenHandler = () => {
         setIsOpen(true)
     }
-    
+
     return (
         <div className='cart' onClick={cartOpenHandler}>
             <div className='icon'>
@@ -16,7 +24,7 @@ const Cart = ({ cartCount, setIsOpen }) => {
                 Your Cart
             </h3>
             <p>
-                {cartCount}
+                {totalItems}
             </p>
         </div>
     )

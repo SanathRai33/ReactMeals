@@ -1,14 +1,15 @@
-import React from 'react'
-import Cart from '../Cart/CartButton'
+import React from "react";
+import CartButton from '../Cart/CartButton'
 import './Header.css'
 
-const Header = ({setIsOpen}) => {
+const Header = ({ setIsOpen }) => {
+
   return (
     <div className='header'>
       <h2>
         <span className='react-clr'>R</span>eact<span className='red-clr'>M</span>eals
       </h2>
-      <Cart cartCount={0} setIsOpen={setIsOpen}  />
+      <CartButton setIsOpen={setIsOpen} />
     </div>
   )
 }

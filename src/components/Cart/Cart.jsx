@@ -1,56 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createPortal } from "react-dom";
+
+import { CartContext } from "../../store/CartContext";
+
 import "./Cart.css";
 
-function Cart({ isOpen, setIsOpen}) {
-    const cartItems = [
-        {
-            id: 1,
-            name: "Sushi",
-            price: 22.99,
-            quantity: 1,
-        },
-        {
-            id: 2,
-            name: "Schnitzel",
-            price: 16.5,
-            quantity: 1,
-        },
-        {
-            id: 3,
-            name: "Barbecue Burger",
-            price: 12.99,
-            quantity: 1,
-        },
-    ];
+const Cart = ({ isOpen, setIsOpen }) => {
 
-    const cartCloseHandler = () =>{
-        setIsOpen(false)
-    }
+    const cartCtx = useContext(CartContext);
 
-    const totalAmount = cartItems.reduce(
+    if (!isOpen) return null;
+
+    const totalAmount = cartCtx.items.reduce(
         (total, item) => total + item.price * item.quantity,
         0
     );
 
-    if(!isOpen){
-        return (
-            <></>
-        )
+    const cartCloseHandler = () => {
+        setIsOpen(false)
     }
 
     return createPortal(
         <div className="cart-backdrop">
+
             <div className="cart-modal">
+
                 <ul className="cart-items">
-                    {cartItems.map((item) => (
-                        <li key={item.id}>
-                            <span>{item.name}</span>
-                            <span>
-                                ${item.price.toFixed(2)} × {item.quantity}
-                            </span>
+
+                    {cartCtx.items.map((item) => (
+                        <li key={item.mealsId}>
+                            <div>
+                                <h4>{item.name}</h4>
+                                <p>
+                                    $ {item.price.toFixed(2)} × {item.quantity}
+                                </p>
+                            </div>
+                            <div>
+                                <p> $ {item.price.toFixed(2) * item.quantity}</p>
+                            </div>
                         </li>
                     ))}
+
                 </ul>
 
                 <div className="cart-total">
@@ -62,10 +52,12 @@ function Cart({ isOpen, setIsOpen}) {
                     <button className="close-btn" onClick={cartCloseHandler}>Close</button>
                     <button className="order-btn">Order</button>
                 </div>
+
             </div>
+
         </div>,
         document.getElementById("overlays")
     );
-}
+};
 
 export default Cart;

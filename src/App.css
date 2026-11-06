@@ -1,5 +1,4 @@
 .App {
-  padding: 0 0 40px 0;
   background-color: #373737;
 }
 
@@ -8,7 +7,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 40px;
+  gap: 60px;
+  padding: 60px 20px;
+  background-image: url('https://img.magnific.com/premium-photo/table-with-many-dishes-including-food-including-rice-veggies-other-foods_1086760-97540.jpg?w=1480');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 

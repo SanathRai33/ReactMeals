@@ -1,26 +1,37 @@
-import { useState } from 'react'
-import './App.css'
-import Cart from './components/Cart/Cart'
-import Header from './components/Layout/Header'
-import Summary from './components/Layout/Summary'
-import MealsList from './components/Meals/MealsList'
+import { useState } from "react";
+
+import "./App.css";
+
+import { CartProvider } from "./store/CartContext";
+
+import Cart from "./components/Cart/Cart";
+import Header from "./components/Layout/Header";
+import Summary from "./components/Layout/Summary";
+import MealsList from "./components/Meals/MealsList";
 
 function App() {
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className='App'>
-      <Header setIsOpen={setIsOpen} />
-      <section className='main-section'>
-        <h1 className='just'></h1>
-        <Summary />
-        <MealsList />
-      </section>
+    <CartProvider>
+      <div className="App">
 
-      <Cart isOpen={isOpen} setIsOpen={setIsOpen} />
-    </div>
-  )
+        <Header setIsOpen={setIsOpen} />
+
+        <section className="main-section">
+          <Summary />
+          <MealsList />
+        </section>
+
+        <Cart
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
+
+      </div>
+    </CartProvider>
+  );
 }
 
-export default App
+export default App;
