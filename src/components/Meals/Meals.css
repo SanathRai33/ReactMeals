@@ -1,0 +1,65 @@
+.meals-list {
+  width: 900px;
+  max-width: 90%;
+  padding: 24px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.meals-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid gray;
+  font-family: "Quicksand", sans-serif;
+}
+
+.meals-item h5 {
+  font-size: 16px;
+}
+
+.meals-item .desc {
+  font-size: 14px;
+  font-style: italic;
+  padding: 4px 0;
+}
+
+.meals-item .price {
+  color: #83512e;
+  font-weight: 800;
+}
+
+.meals-item .amount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.meals-item .amount-top {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 16px;
+}
+
+.amount-top p:first-child {
+  font-weight: bold;
+}
+
+.amount-top p:last-child {
+  border: 1px solid lightblue;
+  padding: 0 24px 0 2px;
+  border-radius: 6px;
+}
+
+.meals-item button {
+  border-radius: 16px;
+  background-color: #752008;
+  padding: 3px 24px;
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+}

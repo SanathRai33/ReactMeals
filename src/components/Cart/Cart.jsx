@@ -1,20 +1,61 @@
-import React from 'react'
-import { IoCartSharp } from "react-icons/io5";
+import React from "react";
+import { createPortal } from "react-dom";
+import "./Cart.css";
 
-const Cart = ({ cartCount }) => {
-    return (
-        <div className='cart'>
-            <div className='icon'>
-                <IoCartSharp className='cart-icon' />
+function Cart() {
+    const cartItems = [
+        {
+            id: 1,
+            name: "Sushi",
+            price: 22.99,
+            quantity: 1,
+        },
+        {
+            id: 2,
+            name: "Schnitzel",
+            price: 16.5,
+            quantity: 1,
+        },
+        {
+            id: 3,
+            name: "Barbecue Burger",
+            price: 12.99,
+            quantity: 1,
+        },
+    ];
+
+    const totalAmount = cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+    );
+
+    return createPortal(
+        <div className="cart-backdrop">
+            <div className="cart-modal">
+                <ul className="cart-items">
+                    {cartItems.map((item) => (
+                        <li key={item.id}>
+                            <span>{item.name}</span>
+                            <span>
+                                ${item.price.toFixed(2)} × {item.quantity}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+
+                <div className="cart-total">
+                    <h2>Total Amount</h2>
+                    <h2>${totalAmount.toFixed(2)}</h2>
+                </div>
+
+                <div className="cart-actions">
+                    <button className="close-btn">Close</button>
+                    <button className="order-btn">Order</button>
+                </div>
             </div>
-            <h3>
-                Your Cart
-            </h3>
-            <p>
-                {cartCount}
-            </p>
-        </div>
-    )
+        </div>,
+        document.getElementById("overlays")
+    );
 }
 
-export default Cart
+export default Cart;

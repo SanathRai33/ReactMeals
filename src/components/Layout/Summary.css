@@ -1,0 +1,38 @@
+.summary {
+  width: 700px;
+  /* height: 160px; */
+  max-width: 92%;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #313131;
+  color: white;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  box-shadow: 1px 1px 16px black;
+}
+
+.summary h2 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+
+@media (max-width: 480px) {
+  .summary {
+    padding: 20px;
+  }
+
+  .summary h2 {
+    font-weight: 500;
+    font-size: 21px;
+  }
+
+  .summary p {
+    font-size: 14px;
+  }
+}

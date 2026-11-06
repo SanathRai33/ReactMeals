@@ -1,5 +1,6 @@
 import React from 'react'
-import Cart from '../Cart/Cart'
+import Cart from '../Cart/CartButton'
+import './Header.css'
 
 const Header = () => {
   return (
